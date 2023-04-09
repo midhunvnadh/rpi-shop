@@ -17,3 +17,4 @@ def write_nfc():
             print("Written")
     finally:
             GPIO.cleanup()
+write_nfc()

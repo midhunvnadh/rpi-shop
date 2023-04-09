@@ -22,3 +22,4 @@ def read_nfc():
     finally:
         GPIO.cleanup()
     return item, price
+

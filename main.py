@@ -1,5 +1,4 @@
 from read import read_nfc
-from write import write_nfc
 from time import sleep
 
 import requests

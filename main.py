@@ -1,18 +1,18 @@
-from read import read_nfc
-from time import sleep
+from wheels import wheels
+from rfid import rfid
 
-import requests
+import threading
 
-def addToCart(name, price):
-    r = requests.put(f"https://picart.redsoc.ml/api/products?name={name}&quantity=1&price={price}")
-    print(r.json())
+if __name__ == '__main__':
+    thread_a = threading.Thread(target=wheels)
+    thread_b = threading.Thread(target=rfid)
 
-while(True):
-    try:
-        name, price = read_nfc()
-        addToCart(name, price)
-    except KeyboardInterrupt:
-        break
-    except Exception as e:
-        print(e)
-    sleep(1)
+    # Start threads
+    thread_a.start()
+    thread_b.start()
+
+    # Wait for threads to finish
+    thread_a.join()
+    thread_b.join()
+
+    print("Threads finished.")
